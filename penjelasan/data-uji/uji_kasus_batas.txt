@@ -1,0 +1,25 @@
+X 1
+mobil
+23
+59
+23
+59
+ya
+ya
+X 2
+motor
+8
+0
+15
+0
+tidak
+tidak
+X 3
+mobil
+0
+0
+23
+59
+tidak
+tidak
+SELESAI

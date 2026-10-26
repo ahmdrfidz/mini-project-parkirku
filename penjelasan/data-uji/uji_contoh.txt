@@ -1,0 +1,46 @@
+L 1234 AB
+sepeda
+motor
+25
+0
+8
+0
+7
+0
+11
+20
+ya
+tidak
+W 5678 CD
+mobil
+9
+0
+9
+15
+tidak
+tidak
+S 9012 EF
+motor
+7
+30
+19
+45
+ya
+tidak
+L 3456 GH
+motor
+10
+0
+10
+16
+ya
+ya
+N 7788 IJ
+mobil
+12
+0
+14
+10
+tidak
+tidak
+SELESAI

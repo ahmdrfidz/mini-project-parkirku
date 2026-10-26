@@ -1,0 +1,25 @@
+A 1111 AA
+motor
+13
+0
+13
+40
+tidak
+tidak
+B 2222 BB
+mobil
+6
+50
+9
+10
+ya
+tidak
+C 3333 CC
+motor
+15
+0
+15
+15
+tidak
+tidak
+SELESAI

@@ -1,0 +1,17 @@
+P1
+motor
+8
+0
+9
+0
+tidak
+tidak
+P2
+motor
+10
+0
+11
+0
+tidak
+tidak
+SELESAI
