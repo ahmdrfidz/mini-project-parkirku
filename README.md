@@ -159,9 +159,9 @@ Rincian lengkap ada di `README-NIM.pdf` bagian *Tabel Kasus Uji*.
 
 ## Penulis
 
-- **Nama:** [NAMA LENGKAP]
-- **NIM:** [NIM]
-- **Kelas:** [KELAS]
+- **Nama:** Ahmad Rafid Zaidan
+- **NIM:** 108052630010
+- **Kelas:** SS1SI-50-REG-05
 
 ## Pengungkapan Penggunaan AI
 
