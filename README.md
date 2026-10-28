@@ -1,4 +1,4 @@
-# ParkirKu — Aplikasi CLI Pencatat Parkir Kampus
+# ParkirKu Aplikasi CLI Pencatat Parkir Kampus
 
 > Mini project **Tugas Individu #1 — Algoritma dan Pemrograman (BBK1AAB4)** dari **Asisten Praktikum (Asprak) Telkom University Surabaya**, Semester 1, tahun 2026.
 
