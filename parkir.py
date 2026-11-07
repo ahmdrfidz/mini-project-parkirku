@@ -1,22 +1,3 @@
-# ==============================================================
-# ParkirKu - Pencatat Parkir Kampus Surabaya
-# Tugas Individu #1 Algoritma dan Pemrograman 2026
-#
-# Program mencatat kendaraan yang keluar dari area parkir selama
-# satu hari, menghitung biaya tiap kendaraan, lalu menampilkan
-# rekap ketika petugas mengetik SELESAI.
-#
-# Hanya memakai materi pekan 1-6: variabel, tipe data, input(),
-# operator, if/elif/else, and/or/not, while, for, dan range().
-# ==============================================================
-
-
-# ==============================================================
-# TAHAP 1 - KONSTANTA & TABEL TARIF
-# Semua angka aturan disimpan di sini agar mudah diubah dan
-# tidak ada "angka ajaib" di tengah rumus.
-# ==============================================================
-
 # Tarif motor (rupiah)
 TARIF_MOTOR_PERTAMA = 2000
 TARIF_MOTOR_BERIKUTNYA = 1000
@@ -74,46 +55,38 @@ print(f"* Denda tiket hilang: Rp {DENDA_TIKET_HILANG}.")
 print()
 
 # ----- Variabel rekap (diberi nilai awal sebelum perulangan) -----
-jumlah_kendaraan = 0          # pencacah
-jumlah_motor = 0              # pencacah
-jumlah_mobil = 0              # pencacah
-jumlah_gratis = 0             # penyaringan + pencacah
-jumlah_diskon = 0             # penyaringan + pencacah
-jumlah_denda = 0              # penyaringan + pencacah
-total_pendapatan = 0          # akumulator
-pendapatan_motor = 0          # akumulator (fitur tambahan)
-pendapatan_mobil = 0          # akumulator (fitur tambahan)
-total_diskon_diberikan = 0    # akumulator (fitur tambahan)
-durasi_terlama = -1           # nilai ekstrem: -1 < durasi terkecil (0)
+jumlah_kendaraan = 0
+jumlah_motor = 0   
+jumlah_mobil = 0
+jumlah_gratis = 0
+jumlah_diskon = 0
+jumlah_denda = 0
+total_pendapatan = 0
+pendapatan_motor = 0
+pendapatan_mobil = 0
+total_diskon_diberikan = 0
+durasi_terlama = -1
 plat_terlama = ""
-bayar_tertinggi = -1          # nilai ekstrem: -1 < total terkecil (0)
+bayar_tertinggi = -1
 plat_tertinggi = ""
 
 
-# ==============================================================
-# TAHAP 4 - PERULANGAN BERPENANDA (SENTINEL)
-# Plat dibaca SEKALI sebelum while (priming read), lalu dibaca
-# lagi di akhir blok. Perulangan berhenti saat plat = SELESAI.
-# ==============================================================
+
+# Perulangan
 plat = input(TANYA_PLAT).strip().upper()
 while plat == "":
     print("Plat nomor tidak boleh kosong.")
     plat = input(TANYA_PLAT).strip().upper()
 
 while plat != PENANDA_SELESAI:
-
-    # ==========================================================
-    # TAHAP 2 - MASUKAN & VALIDASI
-    # Setiap pertanyaan diulang dengan while sampai valid.
-    # ==========================================================
-
-    # --- Jenis kendaraan: hanya motor atau mobil ---
+    # Validasi
+    # Jenis kendaraan: hanya motor atau mobil
     jenis = input("Jenis kendaraan (motor/mobil): ").strip().lower()
     while jenis != JENIS_MOTOR and jenis != JENIS_MOBIL:
         print("Jenis harus motor atau mobil.")
         jenis = input("Jenis kendaraan (motor/mobil): ").strip().lower()
 
-    # --- Waktu masuk: jam 0-23, menit 0-59 ---
+    #Waktu masuk: jam 0-23, menit 0-59
     waktu_masuk_sah = False
     while not waktu_masuk_sah:
         jam_masuk_teks = input(f"Jam masuk ({JAM_TERKECIL}-{JAM_TERBESAR}): ").strip()
@@ -131,7 +104,7 @@ while plat != PENANDA_SELESAI:
                 waktu_masuk_sah = True
     total_menit_masuk = jam_masuk * MENIT_PER_JAM + menit_masuk
 
-    # --- Waktu keluar: rentang sama, dan tidak sebelum waktu masuk ---
+    #Waktu keluar: rentang sama, dan tidak sebelum waktu masuk
     waktu_keluar_sah = False
     while not waktu_keluar_sah:
         jam_keluar_teks = input(f"Jam keluar ({JAM_TERKECIL}-{JAM_TERBESAR}): ").strip()
@@ -150,25 +123,23 @@ while plat != PENANDA_SELESAI:
             else:
                 waktu_keluar_sah = True
 
-    # --- Kartu civitas: hanya ya atau tidak ---
+    #Kartu civitas: hanya ya atau tidak
     jawab_kartu = input("Punya kartu civitas? (ya/tidak): ").strip().lower()
     while jawab_kartu != JAWAB_YA and jawab_kartu != JAWAB_TIDAK:
         print("Jawaban harus ya atau tidak.")
         jawab_kartu = input("Punya kartu civitas? (ya/tidak): ").strip().lower()
     punya_kartu = jawab_kartu == JAWAB_YA
 
-    # --- Tiket hilang: hanya ya atau tidak ---
+    #Tiket hilang: hanya ya atau tidak
     jawab_tiket = input("Tiket hilang? (ya/tidak): ").strip().lower()
     while jawab_tiket != JAWAB_YA and jawab_tiket != JAWAB_TIDAK:
         print("Jawaban harus ya atau tidak.")
         jawab_tiket = input("Tiket hilang? (ya/tidak): ").strip().lower()
     tiket_hilang = jawab_tiket == JAWAB_YA
 
-    # ==========================================================
-    # TAHAP 3 - HITUNG BIAYA & STRUK
-    # ==========================================================
+    # Hitung biaya struk
     durasi = total_menit_keluar - total_menit_masuk
-    jam_tagih = (durasi + MENIT_PER_JAM - 1) // MENIT_PER_JAM   # bulat ke atas
+    jam_tagih = (durasi + MENIT_PER_JAM - 1) // MENIT_PER_JAM
 
     # Pilih tarif sesuai jenis kendaraan
     if jenis == JENIS_MOTOR:
@@ -181,7 +152,7 @@ while plat != PENANDA_SELESAI:
         tarif_maks = TARIF_MOBIL_MAKS
 
     # Tarif dasar: gratis bila <= 15 menit; selain itu rumus jam,
-    # lalu dipotong ke batas maksimum (rumus sama dengan tabel Tahap 1)
+    # lalu dipotong ke batas maksimum
     if durasi <= BATAS_GRATIS_MENIT:
         tarif_dasar = 0
     else:
@@ -215,7 +186,7 @@ while plat != PENANDA_SELESAI:
     print(f"TOTAL       : Rp {total}")
     print()
 
-    # ----- Perbarui variabel rekap (bagian dari Tahap 5) -----
+    #Perbarui variabel rekap
     jumlah_kendaraan = jumlah_kendaraan + 1
     total_pendapatan = total_pendapatan + total
     if jenis == JENIS_MOTOR:
@@ -238,16 +209,14 @@ while plat != PENANDA_SELESAI:
         bayar_tertinggi = total
         plat_tertinggi = plat
 
-    # Baca plat berikutnya (variabel kondisi while berubah di sini)
     plat = input(TANYA_PLAT).strip().upper()
     while plat == "":
         print("Plat nomor tidak boleh kosong.")
         plat = input(TANYA_PLAT).strip().upper()
 
 
-# ==============================================================
-# TAHAP 5 - REKAP AKHIR
-# ==============================================================
+
+#Rekap Akhir
 print()
 print("===== REKAP PARKIR HARI INI =====")
 if jumlah_kendaraan == 0:
