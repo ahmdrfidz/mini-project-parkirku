@@ -100,7 +100,7 @@ while plat == "":
     print("Plat nomor tidak boleh kosong.")
     plat = input(TANYA_PLAT).strip().upper()
 
-while plat != PENANDA_SELESAI
+while plat != PENANDA_SELESAI:
 
     # ==========================================================
     # TAHAP 2 - MASUKAN & VALIDASI

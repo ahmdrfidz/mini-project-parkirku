@@ -217,7 +217,7 @@ while plat != PENANDA_SELESAI:
 
     # ----- Perbarui variabel rekap (bagian dari Tahap 5) -----
     jumlah_kendaraan = jumlah_kendaraan + 1
-    total_pendapatan = total_pendapatn + total
+    total_pendapatan = total_pendapatan + total
     if jenis == JENIS_MOTOR:
         jumlah_motor = jumlah_motor + 1
         pendapatan_motor = pendapatan_motor + total

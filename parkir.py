@@ -9,10 +9,10 @@ TARIF_MOBIL_BERIKUTNYA = 2000
 TARIF_MOBIL_MAKS = 16000
 
 # Aturan tambahan
-BATAS_GRATIS_MENIT = 15       # durasi <= 15 menit tarif dasarnya 0
-PERSEN_DISKON = 20            # diskon kartu civitas 20%
-PERSEN_PENUH = 100            # pembagi persen
-DENDA_TIKET_HILANG = 10000    # denda tiket hilang
+BATAS_GRATIS_MENIT = 15       
+PERSEN_DISKON = 20            
+PERSEN_PENUH = 100            
+DENDA_TIKET_HILANG = 10000    
 
 # Batas waktu dalam satu hari
 JAM_TERKECIL = 0
@@ -54,7 +54,7 @@ print(f"* Diskon {PERSEN_DISKON}% untuk kartu civitas (tiket tidak hilang).")
 print(f"* Denda tiket hilang: Rp {DENDA_TIKET_HILANG}.")
 print()
 
-# ----- Variabel rekap (diberi nilai awal sebelum perulangan) -----
+# Variable
 jumlah_kendaraan = 0
 jumlah_motor = 0   
 jumlah_mobil = 0
@@ -69,7 +69,6 @@ durasi_terlama = -1
 plat_terlama = ""
 bayar_tertinggi = -1
 plat_tertinggi = ""
-
 
 
 # Perulangan
@@ -104,7 +103,7 @@ while plat != PENANDA_SELESAI:
                 waktu_masuk_sah = True
     total_menit_masuk = jam_masuk * MENIT_PER_JAM + menit_masuk
 
-    #Waktu keluar: rentang sama, dan tidak sebelum waktu masuk
+    # Waktu keluar: rentang sama, dan tidak sebelum waktu masuk
     waktu_keluar_sah = False
     while not waktu_keluar_sah:
         jam_keluar_teks = input(f"Jam keluar ({JAM_TERKECIL}-{JAM_TERBESAR}): ").strip()
@@ -123,14 +122,14 @@ while plat != PENANDA_SELESAI:
             else:
                 waktu_keluar_sah = True
 
-    #Kartu civitas: hanya ya atau tidak
+    # Kartu civitas: hanya ya atau tidak
     jawab_kartu = input("Punya kartu civitas? (ya/tidak): ").strip().lower()
     while jawab_kartu != JAWAB_YA and jawab_kartu != JAWAB_TIDAK:
         print("Jawaban harus ya atau tidak.")
         jawab_kartu = input("Punya kartu civitas? (ya/tidak): ").strip().lower()
     punya_kartu = jawab_kartu == JAWAB_YA
 
-    #Tiket hilang: hanya ya atau tidak
+    # Tiket hilang: hanya ya atau tidak
     jawab_tiket = input("Tiket hilang? (ya/tidak): ").strip().lower()
     while jawab_tiket != JAWAB_YA and jawab_tiket != JAWAB_TIDAK:
         print("Jawaban harus ya atau tidak.")
@@ -202,10 +201,10 @@ while plat != PENANDA_SELESAI:
         total_diskon_diberikan = total_diskon_diberikan + diskon
     if denda > 0:
         jumlah_denda = jumlah_denda + 1
-    if durasi > durasi_terlama:          # ">" agar bila seri, yang lebih dulu tetap
+    if durasi > durasi_terlama:          
         durasi_terlama = durasi
         plat_terlama = plat
-    if total > bayar_tertinggi:          # ">" agar bila seri, yang lebih dulu tetap
+    if total > bayar_tertinggi:          
         bayar_tertinggi = total
         plat_tertinggi = plat
 
@@ -214,8 +213,6 @@ while plat != PENANDA_SELESAI:
         print("Plat nomor tidak boleh kosong.")
         plat = input(TANYA_PLAT).strip().upper()
 
-
-
 #Rekap Akhir
 print()
 print("===== REKAP PARKIR HARI INI =====")
@@ -223,7 +220,7 @@ if jumlah_kendaraan == 0:
     # Penjaga data kosong: tidak ada rata-rata maupun nilai ekstrem
     print("Belum ada kendaraan yang tercatat.")
 else:
-    rata_rata = total_pendapatan // jumlah_kendaraan   # aman: jumlah > 0
+    rata_rata = total_pendapatan // jumlah_kendaraan
     print(f"Jumlah kendaraan    : {jumlah_kendaraan}")
     print(f"  Motor             : {jumlah_motor}")
     print(f"  Mobil             : {jumlah_mobil}")
@@ -239,7 +236,6 @@ else:
           f"( {durasi_terlama // MENIT_PER_JAM} jam {durasi_terlama % MENIT_PER_JAM} menit )")
     print(f"Bayar tertinggi     : {plat_tertinggi} ( Rp {bayar_tertinggi} )")
 
-    # Grafik batang teks: satu tanda # untuk satu kendaraan
     print("Grafik jumlah kendaraan:")
     print("Motor | ", end="")
     for i in range(jumlah_motor):
